@@ -1,10 +1,9 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import Search from "./components/Search.jsx"
 import {useState, useEffect} from 'react'
 import {useDebounce} from 'react-use'
 import Spinner from "./components/Spinner.jsx"
 import MovieCard from "./components/MovieCard.jsx";
-import {updateSearchCount} from "./appwrite.js"
+
 
 
 const API_BASE_URL = 'https://api.themoviedb.org/3'
@@ -54,10 +53,7 @@ const App = () => {
      }
 
      setMovieList(data.results || []);
-    
-     if(query && data.results.length > 0){
-      await updateSearchCount(query, data.results[0]);
-     }
+     //updateSearchCount();
     
   } catch (error) {
     console.log(`Error fetching movies: ${error}`)
